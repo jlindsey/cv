@@ -8,13 +8,6 @@ resource "digitalocean_project" "cv_project" {
   description = "CV junk"
   is_default  = false
   environment = "Production"
-  resources = [
-    digitalocean_droplet.cv_server.urn,
-  ]
-
-  lifecycle {
-    ignore_changes = [resources]
-  }
 }
 
 resource "digitalocean_ssh_key" "cv_key" {
@@ -93,6 +86,11 @@ resource "digitalocean_droplet" "cv_server" {
     caddyfile         = filebase64("${path.module}/cloudinit/Caddyfile")
     tailscale_key     = tailscale_tailnet_key.cv_server_key.key
   })
+}
+
+resource "digitalocean_project_resources" "droplet_project" {
+  project   = digitalocean_project.cv_project.id
+  resources = [digitalocean_droplet.cv_server.urn]
 }
 
 resource "digitalocean_record" "cv_jlindsey_me" {
