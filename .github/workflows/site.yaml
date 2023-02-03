@@ -40,4 +40,4 @@ jobs:
       - uses: tailscale/github-action@v1
         with:
           authkey: ${{ secrets.TAILNET_AUTHKEY }}
-      - run: rsync -avzr index.html css/ root@cv-web-server:/mnt/data/web/
+      - run: rsync -avz index.html css root@cv-web-server:/mnt/data/web/
