@@ -1,9 +1,10 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
 name: Terraform
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths: ["tf/*"]
 
 env:
