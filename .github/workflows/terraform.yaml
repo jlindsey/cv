@@ -41,7 +41,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SPACES_SECRET_ACCESS_KEY }}
       - run: terraform plan -out plan.tfplan
+        working-directory: tf
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TAILSCALE_API_KEY: ${{ secrets.TAILSCALE_API_KEY }}
       - run: terraform apply plan.tfplan
+        working-directory: tf
