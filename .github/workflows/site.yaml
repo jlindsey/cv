@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+---
+name: Build and Deploy Site
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker://pandoc/core:3-alpine
+        with:
+          args: -s -f markdown+yaml_metadata_block+raw_attribute -t html -o index.html resume.md
+      - uses: actions/upload-artifact@v3
+        with:
+          name: index
+          path: index.html
+          if-no-files-found: error
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment:
+      name: Production
+      url: https://cv.jlindsey.me
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: index
+      - uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEPLOY_KEY }}
+          name: id_ed25519
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - uses: tailscale/github-action@v1
+        with:
+          authkey: ${{ secrets.TAILNET_AUTHKEY }}
+      - run: rsync -avzr index.html css/ root@cv-web-server:/mnt/data/web/
