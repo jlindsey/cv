@@ -1,0 +1,35 @@
+# -*- mode: sh -*-
+# Vim mode
+bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+# Tab completion
+autoload -Uz compinit && compinit
+setopt complete_in_word
+setopt auto_menu
+
+# History settings
+HISTFILE=~/.history-zsh
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history
+setopt bang_hist
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
+
+# Misc
+setopt interactive_comments
+unsetopt correct_all
+
+alias ls="ls -F --color=auto --group-directories-first"
+alias ll="ls -lAh"
+
+eval "$(starship init zsh)"

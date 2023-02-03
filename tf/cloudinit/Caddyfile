@@ -1,0 +1,9 @@
+{
+    admin off
+    storage file_system "/mnt/data/caddy"
+}
+
+cv.jlindsey.me {
+    root * /mnt/data/web
+    file_server
+}

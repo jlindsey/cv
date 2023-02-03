@@ -1,0 +1,67 @@
+#cloud-config
+# yaml-language-server: $schema=https://raw.githubusercontent.com/canonical/cloud-init/main/cloudinit/config/schemas/versions.schema.cloud-config.json
+---
+apt:
+  preserve_sources_list: true
+  sources:
+    tailscale:
+      source: "deb https://pkgs.tailscale.com/stable/debian bullseye main"
+      key: ${tailscale_apt_key}
+    docker:
+      source: "deb https://download.docker.com/linux/debian bullseye stable"
+      key: ${docker_apt_key}
+
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - zsh
+  - htop
+  - git
+  - rsync
+  - tailscale
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin
+
+disk_setup:
+  /dev/sda:
+    table_type: gpt
+    layout: true
+    overwrite: false
+
+fs_setup:
+  - label: webdata
+    filesystem: ext4
+    partition: auto
+    device: /dev/sda
+    overwrite: false
+
+mounts:
+  - ["/dev/sda", "/mnt", "ext4", "defaults", "0", "0"]
+
+write_files:
+  - path: /root/.zshrc
+    encoding: b64
+    owner: root:root
+    permissions: "0644"
+    content: ${zshrc}
+  - path: /root/docker-compose.yaml
+    encoding: b64
+    owner: root:root
+    permissions: "0o644"
+    content: ${web_compose}
+  - path: /root/Caddyfile
+    encoding: b64
+    owner: root:root
+    permissions: "0o644"
+    content: ${caddyfile}
+
+runcmd:
+  - ["curl", "-sSLo", "/tmp/install.sh", "https://starship.rs/install.sh"]
+  - ["sudo", "sh", "/tmp/install.sh", "-y"]
+  - ["sudo", "chsh", "-s", "/usr/bin/zsh", "root"]
+  - ["sudo", "mkdir", "-p", "/mnt/data/web", "/mnt/data/caddy"]
+  - ["sudo", "tailscale", "up", "--authkey", "${tailscale_key}"]
+  - ["sudo", "docker", "compose", "-f", "/root/docker-compose.yaml", "up", "-d"]

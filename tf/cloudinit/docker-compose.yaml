@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+---
+version: "3"
+
+services:
+  web:
+    image: caddy:2-alpine
+    restart: always
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /mnt/data/web:/mnt/data/web:ro
+      - /mnt/data/caddy:/mnt/data/caddy:rw
+    ports:
+      - 443:443
