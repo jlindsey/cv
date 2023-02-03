@@ -54,7 +54,7 @@ Since 2019
     apps. Used internal Ruby framework to import customer data in a variety of formats. Worked on
     existing administrative codebase to fix bugs and add features.
     
-2011-2013
+2010 - 2013
 :   *Operations for [Cloudspace][5]*
     (Orlando, FL)
 
@@ -62,13 +62,6 @@ Since 2019
     tools such as Chef, Ansible, and Nagios. Set up and maintained MySQL databases. Assisted
     developers with deployments and reproducable local environments with Vagrant.
   
-2010 - 2011
-:   *Web Developer for [Cloudspace][5]*
-    (Orlando, FL)
-
-    Worked with clients to create web and mobile applications to spec using PHP and Ruby on Rails.
-    Maintained a custom CMS and time tacking system for internal use.
-
 [1]: https://www.remedyhealthmedia.com
 [2]: https://uis.georgetown.edu
 [3]: https://www.snapshots.com
