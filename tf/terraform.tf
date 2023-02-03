@@ -19,6 +19,11 @@ terraform {
       version = "~> 2.25"
     }
 
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.2"
+    }
+
     tailscale = {
       source  = "tailscale/tailscale"
       version = "~> 0.13"
@@ -27,6 +32,8 @@ terraform {
 }
 
 provider "digitalocean" {}
+
+provider "null" {}
 
 provider "tailscale" {
   tailnet = "jlindsey.github"

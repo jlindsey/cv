@@ -60,18 +60,44 @@ resource "digitalocean_reserved_ip" "cv_ip" {
   region     = digitalocean_droplet.cv_server.region
 }
 
+locals {
+  name   = "cv-web-server"
+  image  = "debian-11-x64"
+  size   = "s-1vcpu-512mb-10gb"
+  region = "nyc1"
+}
+
+resource "null_resource" "tailnet_key_replacer" {
+  triggers = {
+    name              = local.name
+    image             = local.image
+    size              = local.size
+    region            = local.region
+    userdata_template = filemd5("${path.module}/cloudinit/cv.yaml.tmpl")
+    tailscale_apt_key = filemd5("${path.module}/cloudinit/tailscale.key")
+    docker_apt_key    = filemd5("${path.module}/cloudinit/docker.key")
+    zshrc             = filemd5("${path.module}/cloudinit/zshrc")
+    web_compose       = filemd5("${path.module}/cloudinit/docker-compose.yaml")
+    caddyfile         = filemd5("${path.module}/cloudinit/Caddyfile")
+  }
+}
+
 resource "tailscale_tailnet_key" "cv_server_key" {
   reusable      = false
   ephemeral     = false
   preauthorized = true
   expiry        = 600
+
+  lifecycle {
+    replace_triggered_by = [null_resource.tailnet_key_replacer]
+  }
 }
 
 resource "digitalocean_droplet" "cv_server" {
-  name              = "cv-web-server"
-  image             = "debian-11-x64"
-  size              = "s-1vcpu-512mb-10gb"
-  region            = "nyc1"
+  name              = local.name
+  image             = local.image
+  size              = local.size
+  region            = local.region
   ssh_keys          = [digitalocean_ssh_key.cv_key.id]
   volume_ids        = [digitalocean_volume.cv_web_data.id]
   graceful_shutdown = true
