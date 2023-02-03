@@ -21,6 +21,12 @@ body {
   }
 }
 
+@page {
+  size: A4;
+  width: 800px;
+  margin-top: 0;
+}
+
 /*
 .title {
     display: none;
