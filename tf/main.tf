@@ -21,6 +21,7 @@ resource "digitalocean_tag" "cv_tag" {
 }
 
 resource "digitalocean_firewall" "cv" {
+  name = "cv-web-server"
   tags = [digitalocean_tag.cv_tag.id]
 
   outbound_rule {
@@ -72,7 +73,7 @@ resource "digitalocean_droplet" "cv_server" {
   monitoring        = true
   tags              = [digitalocean_tag.cv_tag.id]
 
-  userdata = templatefile("${path.module}/userdata/cv.yaml.tmpl", {
+  user_data = templatefile("${path.module}/cloudinit/cv.yaml.tmpl", {
     tailscale_apt_key = jsonencode(file("${path.module}/cloudinit/tailscale.key"))
     docker_apt_key    = jsonencode(file("${path.module}/cloudinit/docker.key"))
     zshrc             = filebase64("${path.module}/cloudinit/zshrc")
