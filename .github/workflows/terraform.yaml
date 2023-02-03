@@ -3,12 +3,15 @@
 name: Terraform
 
 on:
+  workflow_dispatch:
   push:
     branches: [master]
     paths: ["tf/*"]
 
 env:
   TF_IN_AUTOMATION: 1
+  AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SPACES_SECRET_ACCESS_KEY }}
 
 jobs:
   lint:
@@ -19,9 +22,6 @@ jobs:
       - uses: terraform-linters/setup-tflint@v3
       - run: terraform init
         working-directory: tf
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SPACES_SECRET_ACCESS_KEY }}
       - run: terraform validate
         working-directory: tf
       - name: Run TFLint
@@ -37,9 +37,6 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
       - run: terraform init
         working-directory: tf
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SPACES_SECRET_ACCESS_KEY }}
       - run: terraform plan -out plan.tfplan
         working-directory: tf
         env:
