@@ -82,7 +82,7 @@ Since 2019
 Ruby library for parsing, validating, and comparing semantic version strings.
 
 `<i class="fa-brands fa-github"></i>`{=html} [jlindsey/cv][7] —
-This résumé, written in Markdown and automatically rendered and pushed into a website.
+This résumé, written in Markdown and automatically rendered and deployed with GitOps.
 
 `<i class="fa-brands fa-github"></i>`{=html} [jlindsey/do][8] —
 Terraform-based infrastructure-as-code for my personal cloud on DigitalOcean.
