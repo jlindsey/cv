@@ -11,4 +11,5 @@ services:
       - /mnt/data/web:/mnt/data/web:ro
       - /mnt/data/caddy:/mnt/data/caddy:rw
     ports:
+      - 80:80
       - 443:443
