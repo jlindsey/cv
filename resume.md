@@ -5,7 +5,6 @@ css:
   - css/fontawesome/css/brands.min.css
   - css/fontawesome/css/solid.min.css
   - css/cv.css
-  - css/style.css
 ---
 
 # Joshua Lindsey

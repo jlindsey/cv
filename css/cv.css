@@ -64,6 +64,10 @@ blockquote {
   text-align: center;
 }
 
+blockquote > p {
+  line-height: 1.2rem;
+}
+
 /* Links */
 a {
   text-decoration: none;
