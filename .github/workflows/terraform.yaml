@@ -44,3 +44,6 @@ jobs:
           TAILSCALE_API_KEY: ${{ secrets.TAILSCALE_API_KEY }}
       - run: terraform apply plan.tfplan
         working-directory: tf
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          TAILSCALE_API_KEY: ${{ secrets.TAILSCALE_API_KEY }}
