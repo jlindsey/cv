@@ -27,6 +27,12 @@ body {
   margin-top: 0;
 }
 
+@media print {
+  body > blockquote:last-child {
+    display: none;
+  }
+}
+
 /*
 .title {
     display: none;

@@ -51,6 +51,7 @@ jobs:
       - uses: tailscale/github-action@v1
         with:
           authkey: ${{ secrets.TAILNET_AUTHKEY }}
-      - run: |
+      - name: Rsync files
+        run: |
           cp -r css site
           rsync -avz --delete site/ root@cv-web-server:/mnt/data/web/

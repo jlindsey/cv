@@ -98,3 +98,5 @@ Go library for managing gRPC certs, contributed several features
 > `<i class="fa-solid fa-envelope"></i>`{=html} joshua.s.lindsey@gmail.com |
 > `<i class="fa-brands fa-github"></i>`{=html} jlindsey |
 > `<i class="fa-brands fa-linkedin"></i>`{=html} joshua-lindsey
+
+> `<a href="/resume.pdf">PDF</a> | <a href="/resume.txt">TXT</a>`{=html}
