@@ -48,9 +48,11 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           name: id_ed25519
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      - uses: tailscale/github-action@v1
+      - uses: tailscale/github-action@v2
         with:
-          authkey: ${{ secrets.TAILNET_AUTHKEY }}
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
       - name: Rsync files
         run: |
           cp -r css site
