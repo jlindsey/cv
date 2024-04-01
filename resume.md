@@ -17,8 +17,17 @@ css:
 
 ## Employment History
 
-Since 2019
-:   *DevOps Engineer for [Remedy Health Media][1]*
+Since 2023
+:   *Senior Analyst – Operations at [Lightkeeper][6]*
+    (Boston, MA / Remote).
+
+    Maintained and developed processes and automations for internal customer support, including user
+    and permission management; cloud infrastructure and server creation and provisioning; application
+    deployments; and data warehousing. Spearheaded efforts to modernize bespoke scripts with standard
+    tools such as Terraform and Ansible.
+
+2019 - 2023
+:   *DevOps Engineer at [Remedy Health Media][1]*
     (Arlington, VA / Remote).
 
     Designed and implemented a greenfield AWS-based architecture using the Hashicorp stack (Consul,
@@ -28,7 +37,7 @@ Since 2019
     interact with various levels of the deployment stack.
 
 2017 - 2019
-:   *DevOps Engineer for [Georgetown University][2]*
+:   *DevOps Engineer at [Georgetown University][2]*
     (Washington, DC).
 
     Created a series of tools for internal use including DNS scripting and automation, TLS
@@ -39,7 +48,7 @@ Since 2019
     management.
 
 2014 - 2017
-:   *CTO for [Snapshots][3]*
+:   *CTO at [Snapshots][3]*
     (Winter Park, FL).
 
     Designed and wrote a Ruby on Rails API to service a family of client applications including iOS,
@@ -47,7 +56,7 @@ Since 2019
     servers with Terraform and Salt. Engineered deployment strategy with CI pipeline in Jenkins.
 
 2013 - 2014
-:   *Web Developer for [Core-Apps][4]*
+:   *Web Developer at [Core-Apps][4]*
     (Remote).
 
     Prototyped Ruby on Rails progressive web app and CMS backend as an alternative to custom native
@@ -55,7 +64,7 @@ Since 2019
     existing administrative codebase to fix bugs and add features.
     
 2010 - 2013
-:   *Operations for [Cloudspace][5]*
+:   *Operations at [Cloudspace][5]*
     (Orlando, FL)
 
     Installed, configured, monitored, and maintained both physical servers and cloud instances using
@@ -67,6 +76,7 @@ Since 2019
 [3]: https://www.snapshots.com
 [4]: https://www.core-apps.com
 [5]: http://cloudspace.com
+[6]: https://lightkeeper.com
     
 ## Notable Projects
 
