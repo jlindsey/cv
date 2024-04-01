@@ -71,12 +71,13 @@ Since 2023
     tools such as Chef, Ansible, and Nagios. Set up and maintained MySQL databases. Assisted
     developers with deployments and reproducable local environments with Vagrant.
   
-[1]: https://www.remedyhealthmedia.com
-[2]: https://uis.georgetown.edu
-[3]: https://www.snapshots.com
-[4]: https://www.core-apps.com
-[5]: http://cloudspace.com
-[6]: https://lightkeeper.com
+
+[1]: https://lightkeeper.com
+[2]: https://www.remedyhealthmedia.com
+[3]: https://uis.georgetown.edu
+[4]: https://www.snapshots.com
+[5]: https://www.core-apps.com
+[6]: http://cloudspace.com
     
 ## Notable Projects
 
@@ -96,11 +97,11 @@ Rust daemon for uploading and sharing screeshots using Sendcat
 Go library for managing gRPC certs, contributed several features
 
 
-[6]: https://github.com/jlindsey/semantic
-[7]: https://github.com/jlindsey/cv
-[8]: https://github.com/jlindsey/do
-[9]: https://github.com/jlindsey/screencat
-[10]: https://github.com/johanbrandhorst/certify
+[7]: https://github.com/jlindsey/semantic
+[8]: https://github.com/jlindsey/cv
+[9]: https://github.com/jlindsey/do
+[10]: https://github.com/jlindsey/screencat
+[11]: https://github.com/johanbrandhorst/certify
 
 ----
 
